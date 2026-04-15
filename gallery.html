@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>裘千尺 · Tattoo Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+<!-- LANGUAGE SELECTOR -->
+<div class="lang-overlay" id="langOverlay">
+  <div class="lang-title">裘千尺</div>
+  <div class="lang-sub">TATTOO GALLERY</div>
+  <div class="lang-options">
+    <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('es')">Español</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo">裘千尺 <span data-i18n="subtitle"></span></div>
+      <div class="header-actions">
+        <button class="lang-switch" id="langSwitchBtn" onclick="showLangPicker()"></button>
+        <button class="btn-icon" id="adminBtn" style="display:none" onclick="openAdmin()" data-i18n="upload_btn"></button>
+        <button class="btn-icon" onclick="openCart()">
+          <span data-i18n="cart_btn"></span>
+          <span class="badge hidden" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="tags-wrap" id="tagsWrap"></div>
+    <div class="search-wrap" id="searchWrap">
+      <input class="search-input" id="searchInput" placeholder="Search · 搜索 · Buscar..." autocomplete="off">
+      <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+      <div class="search-sug" id="searchSug"></div>
+    </div>
+  </div>
+</div>
+
+<div class="count" id="countEl"></div>
+<div class="grid" id="grid"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">&times;</button>
+  <button class="lb-cart-btn" onclick="closeLb();openCart()">
+    <span data-i18n="cart_btn">Tattoo List</span>
+    <span class="badge hidden" id="lbCartBadge">0</span>
+  </button>
+  <button class="lb-nav prev" onclick="lbPrev()">&#8249;</button>
+  <button class="lb-nav next" onclick="lbNext()">&#8250;</button>
+  <img class="lb-img" id="lbImg">
+  <div class="lb-info">
+    <div class="lb-name" id="lbName"></div>
+    <div class="lb-tags" id="lbTags"></div>
+    <div class="lb-story" id="lbStory"></div>
+    <button class="lb-save" id="lbSave" onclick="toggleSaveFromLb()"></button>
+    <div class="lb-related" id="lbRelated"></div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="panel-header">
+    <h2 data-i18n="cart_title"></h2>
+    <button class="panel-close" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="panel-body" id="cartBody"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+  <div class="panel-header">
+    <h2 data-i18n="admin_title"></h2>
+    <button class="panel-close" onclick="closeAdmin()">&times;</button>
+  </div>
+  <div class="admin-body" id="adminBody">
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <span data-i18n="drop_hint"></span>
+      <input type="file" id="fileInput" multiple accept="image/*">
+    </div>
+    <div class="upload-queue" id="uploadQueue"></div>
+  </div>
+  <div class="admin-actions">
+    <button class="btn-cancel" onclick="closeAdmin()" data-i18n="cancel"></button>
+    <button class="btn-export" onclick="exportData()" data-i18n="export_btn"></button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="gallery.js"></script>
+</body>
+</html>

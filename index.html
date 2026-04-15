@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>裘千尺 · Tattoo Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════ SPLASH ════ -->
+<div id="splash">
+  <div id="finderWrap">
+    <div id="finderWin">
+      <div class="fn-titlebar">
+        <div class="fn-dots">
+          <span class="fn-dot fn-r"></span>
+          <span class="fn-dot fn-y"></span>
+          <span class="fn-dot fn-g"></span>
+        </div>
+        <span class="fn-title">裘千尺</span>
+        <div class="fn-toolbar-icons">
+          <span class="fn-icon-btn">◀</span>
+          <span class="fn-icon-btn">▶</span>
+          <span class="fn-icon-btn fn-active">⊞</span>
+          <span class="fn-icon-btn">≡</span>
+          <span class="fn-icon-btn">⊟</span>
+        </div>
+      </div>
+      <div class="fn-body">
+        <div class="fn-sidebar">
+          <div class="fn-sgroup">Favorites</div>
+          <div class="fn-sitem"><span class="fn-sico">🗂</span> All My Files</div>
+          <div class="fn-sitem"><span class="fn-sico">📡</span> AirDrop</div>
+          <div class="fn-sitem"><span class="fn-sico">🖥</span> Desktop</div>
+          <div class="fn-sitem"><span class="fn-sico">📄</span> Documents</div>
+          <div class="fn-sitem"><span class="fn-sico">⬇</span> Downloads</div>
+          <div class="fn-sitem fn-sel"><span class="fn-sico">🏠</span> 裘千尺</div>
+          <div class="fn-sgroup" style="margin-top:10px">Devices</div>
+          <div class="fn-sitem"><span class="fn-sico">💻</span> MacBook</div>
+        </div>
+        <div class="fn-main" id="fnMain">
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>Tattoo Flash</span></div>
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>References</span></div>
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>Clients</span></div>
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>Barcelona</span></div>
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>Hangzhou</span></div>
+          <div class="fn-folder"><div class="fn-ficon fn-blue">🗂</div><span>Bazar Duo</span></div>
+          <div class="fn-folder" id="fnFile">
+            <div class="fn-ficon fn-rtf">§</div>
+            <span>Qianchi Tattoo Studio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="fnCursor">&#x2B06;</div>
+  </div>
+  <div class="splash-skip" onclick="window.endSplash && window.endSplash()">TAP TO SKIP ▶</div>
+</div>
+
+<!-- ════ LANGUAGE SELECT ════ -->
+<div id="langSelect" style="display:none;">
+  <div id="langCard">
+    <div id="langTitle">Qianchi Tattoo Studio</div>
+    <div id="langSub">choose your language</div>
+    <div id="langBtns">
+      <button class="lang-btn" onclick="setLang('en')">
+        <span class="lang-btn-main">English</span>
+        <span class="lang-btn-sub">EN</span>
+      </button>
+      <button class="lang-btn" onclick="setLang('es')">
+        <span class="lang-btn-main">Español</span>
+        <span class="lang-btn-sub">ES</span>
+      </button>
+      <button class="lang-btn" onclick="setLang('zh')">
+        <span class="lang-btn-main">中文</span>
+        <span class="lang-btn-sub">ZH</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ APP ════ -->
+<div class="app">
+
+  <!-- titlebar -->
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot dot-r" onclick="show('home')"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="tb-name">
+      <div class="tb-file-icon">§</div>
+      <span>Qianchi Tattoo Studio</span>
+    </div>
+  </div>
+
+  <!-- toolbar -->
+  <div class="toolbar-wrap">
+    <div class="toolbar">
+      <div class="tg"><div class="tb">¶</div></div>
+      <div class="tg">
+        <select class="tsel" style="width:62px"><option>Courier</option></select>
+        <select class="tsel" style="width:68px"><option>Negrita</option></select>
+        <select class="tsel" style="width:40px"><option>12</option></select>
+      </div>
+      <div class="tg">
+        <button class="tb" id="langToggleBtn" onclick="cycleLang()" style="font-size:10px;letter-spacing:0.06em;padding:0 8px;color:var(--t-ink);">🌐 EN</button>
+      </div>
+      <div class="tg">
+        <button class="tb" onclick="togglePalette(event)" style="font-size:10px;letter-spacing:0.06em;padding:0 8px;color:var(--t-ink);">⬛ Change Background</button>
+      </div>
+      <div class="tg"><div class="tb" style="font-size:10px;padding:0 5px">a</div></div>
+      <div class="tg">
+        <div class="tb" style="font-weight:bold">B</div>
+        <div class="tb" style="font-style:italic">I</div>
+        <div class="tb" style="text-decoration:underline">U</div>
+      </div>
+      <div class="tg">
+        <div class="tb">≡</div><div class="tb">≡</div><div class="tb">≡</div><div class="tb">≡</div>
+      </div>
+      <div class="tg"><select class="tsel" style="width:42px"><option>1.0</option></select></div>
+      <div class="tg"><div class="tb">☰</div></div>
+    </div>
+
+    <!-- COLOR PALETTE BAR -->
+    <div class="palette-bar" id="paletteBar">
+      <div class="swatch active" style="background:#ffffff;border-color:#888" title="White"       onclick="setTheme('white')"></div>
+      <div class="swatch"        style="background:#000000"                   title="Black"       onclick="setTheme('black')"></div>
+      <div class="swatch"        style="background:#f0ede6"                   title="Cream"       onclick="setTheme('cream')"></div>
+      <div class="swatch"        style="background:#e8e0d4"                   title="Linen"       onclick="setTheme('linen')"></div>
+      <div class="pal-sep"></div>
+      <div class="swatch"        style="background:#fce4ec"                   title="Blush"       onclick="setTheme('blush')"></div>
+      <div class="swatch"        style="background:#f8bbd0"                   title="Pink"        onclick="setTheme('pink')"></div>
+      <div class="swatch"        style="background:#e1f5fe"                   title="Sky"         onclick="setTheme('sky')"></div>
+      <div class="swatch"        style="background:#e8f5e9"                   title="Mint"        onclick="setTheme('mint')"></div>
+      <div class="swatch"        style="background:#fff9c4"                   title="Lemon"       onclick="setTheme('lemon')"></div>
+      <div class="swatch"        style="background:#f3e5f5"                   title="Lavender"    onclick="setTheme('lavender')"></div>
+      <div class="swatch"        style="background:#fbe9e7"                   title="Peach"       onclick="setTheme('peach')"></div>
+      <div class="pal-sep"></div>
+      <div class="swatch"        style="background:#ff4081"                   title="Hot Pink"    onclick="setTheme('hotpink')"></div>
+      <div class="swatch"        style="background:#e53935"                   title="Red"         onclick="setTheme('red')"></div>
+      <div class="swatch"        style="background:#ff6d00"                   title="Orange"      onclick="setTheme('orange')"></div>
+      <div class="swatch"        style="background:#ffd600"                   title="Yellow"      onclick="setTheme('yellow')"></div>
+      <div class="swatch"        style="background:#00c853"                   title="Green"       onclick="setTheme('green')"></div>
+      <div class="swatch"        style="background:#0091ea"                   title="Blue"        onclick="setTheme('blue')"></div>
+      <div class="swatch"        style="background:#aa00ff"                   title="Purple"      onclick="setTheme('purple')"></div>
+      <div class="pal-sep"></div>
+      <div class="swatch"        style="background:#1a1a2e"                   title="Midnight"    onclick="setTheme('midnight')"></div>
+      <div class="swatch"        style="background:#1b4332"                   title="Forest"      onclick="setTheme('forest')"></div>
+      <div class="swatch"        style="background:#2d1b69"                   title="Ultraviolet" onclick="setTheme('ultraviolet')"></div>
+      <div class="swatch"        style="background:#3e2723"                   title="Espresso"    onclick="setTheme('espresso')"></div>
+      <div class="swatch"        style="background:#37474f"                   title="Slate"       onclick="setTheme('slate')"></div>
+    </div>
+  </div><!-- /toolbar-wrap -->
+
+  <!-- DRAW BAR -->
+  <div class="draw-bar" id="drawBar">
+    <button class="draw-tool-btn" id="drawToggle" onclick="toggleDraw()">✏️ 画</button>
+    <div class="draw-sep"></div>
+    <button class="brush-btn on" id="bsz1" onclick="setBrush(2,'bsz1')" title="细 Fine"><div class="brush-dot" style="width:2px;height:2px"></div></button>
+    <button class="brush-btn"    id="bsz2" onclick="setBrush(5,'bsz2')" title="中 Mid"><div class="brush-dot" style="width:5px;height:5px"></div></button>
+    <button class="brush-btn"    id="bsz3" onclick="setBrush(10,'bsz3')" title="粗 Thick"><div class="brush-dot" style="width:9px;height:9px"></div></button>
+    <button class="brush-btn"    id="bsz4" onclick="setBrush(20,'bsz4')" title="超粗 Fat"><div class="brush-dot" style="width:13px;height:13px"></div></button>
+    <div class="draw-sep"></div>
+    <button class="draw-tool-btn" id="eraserBtn" onclick="toggleEraser()">◻ 橡皮</button>
+    <div class="draw-sep"></div>
+    <div class="draw-cur-color" id="drawCurColor" style="background:#111111"></div>
+    <div class="draw-sep"></div>
+    <div class="draw-color on"  style="background:#111111"            onclick="setDrawColor('#111111',this)"></div>
+    <div class="draw-color"     style="background:#ffffff;border-color:#999" onclick="setDrawColor('#ffffff',this)"></div>
+    <div class="draw-color"     style="background:#e53935"            onclick="setDrawColor('#e53935',this)"></div>
+    <div class="draw-color"     style="background:#ff6d00"            onclick="setDrawColor('#ff6d00',this)"></div>
+    <div class="draw-color"     style="background:#ffd600"            onclick="setDrawColor('#ffd600',this)"></div>
+    <div class="draw-color"     style="background:#00c853"            onclick="setDrawColor('#00c853',this)"></div>
+    <div class="draw-color"     style="background:#0091ea"            onclick="setDrawColor('#0091ea',this)"></div>
+    <div class="draw-color"     style="background:#aa00ff"            onclick="setDrawColor('#aa00ff',this)"></div>
+    <div class="draw-color"     style="background:#ff4081"            onclick="setDrawColor('#ff4081',this)"></div>
+    <div class="draw-sep"></div>
+    <button class="draw-tool-btn" onclick="clearDraw()" title="清除">✕ 清除</button>
+  </div>
+
+  <div id="drawCursor"></div>
+
+  <!-- ruler -->
+  <div class="ruler">
+    <div class="ruler-tri">▼</div>
+    <div class="ruler-inner">
+      <div class="ruler-marks">
+        <div class="rn">0</div><div class="rn">2</div><div class="rn">4</div>
+        <div class="rn">6</div><div class="rn">8</div><div class="rn">10</div>
+        <div class="rn">12</div><div class="rn">14</div><div class="rn">16</div><div class="rn">18</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- document area -->
+  <div id="drawWrap">
+    <canvas id="drawCanvas"></canvas>
+    <div class="doc-area" id="docArea">
+
+      <!-- ══ HOME ══ -->
+      <div id="home" class="screen active">
+        <div class="paper home-paper">
+          <div class="home-top">
+            <div class="home-name-block" id="homeNameBlock">
+              <div class="home-name-en">qiuqianchi</div>
+              <div class="home-name-zh">裘千尺 <span class="home-pronouns">she/they</span></div>
+            </div>
+            <div class="home-bio" id="homeBio">
+              <div class="hbio-en">Tattoo Artist · Feminist Artist · Interaction Designer</div>
+              <div class="hbio-es">Tatuadora · Artista feminista · Diseñadora de interacción</div>
+              <div class="hbio-zh">纹身师 · 女性主义艺术家 · 交互设计师</div>
+              <div class="hbio-loc">Based in Barcelona · Available worldwide</div>
+            </div>
+          </div>
+          <div class="home-octo" id="jackBox" onclick="replayJack()" title="tap to replay"></div>
+          <div class="home-bottom">
+            <button class="home-btn home-btn-book" onclick="show('book')">
+              <span class="hb-en">Book a Tattoo</span>
+              <span class="hb-es">Reservar Tatuaje</span>
+              <span class="hb-zh">预约纹身</span>
+            </button>
+            <button class="home-btn" onclick="show('shop')">
+              <span class="hb-en">Shop Products</span>
+              <span class="hb-es">Tienda</span>
+              <span class="hb-zh">购买点好玩的产品</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ BOOK ══ -->
+      <div id="book" class="screen">
+        <div class="paper inner-paper">
+          <button class="doc-back" onclick="show('home')">← Back / Volver / 返回</button>
+          <div class="doc-title-en">How to book a tattoo?</div>
+          <div class="doc-title-es">¿Cómo reservar un tatuaje?</div>
+          <div class="doc-title-zh">如何预约纹身？</div>
+          <hr class="thick">
+          <div class="desc-box">
+            <div class="desc-en">Choose the way that fits you.</div>
+            <div class="desc-es">Elige la forma que más te convenga.</div>
+            <div class="desc-zh">请选择适合你的方式。</div>
+          </div>
+          <button class="nav-item" onclick="show('flash')">
+            <div class="ni-art"> _
+ / |
+| |
+|_|</div>
+            <div class="ni-body">
+              <div class="ni-en">Flash Tattoo</div>
+              <div class="ni-es">Reservar Flash</div>
+              <div class="ni-zh">Flash 预约</div>
+            </div>
+            <div class="ni-arr">▶</div>
+          </button>
+          <button class="nav-item" onclick="show('custom')">
+            <div class="ni-art"> ___
+|_  )
+ / /
+/___|</div>
+            <div class="ni-body">
+              <div class="ni-en">Custom Tattoo Design</div>
+              <div class="ni-es">Diseño personalizado</div>
+              <div class="ni-zh">定制设计</div>
+            </div>
+            <div class="ni-arr">▶</div>
+          </button>
+          <button class="nav-item" onclick="show('yours')">
+            <div class="ni-art"> ___
+|__ /
+|_ \
+|___/</div>
+            <div class="ni-body">
+              <div class="ni-en">Tattoo Your Design</div>
+              <div class="ni-es">Tu propio diseño</div>
+              <div class="ni-zh">自带图案</div>
+            </div>
+            <div class="ni-arr">▶</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══ YOUR DESIGN ══ -->
+      <div id="yours" class="screen">
+        <div class="paper inner-paper">
+          <button class="doc-back" onclick="show('book')">← Back / Volver / 返回</button>
+          <div class="doc-title-en">Tattoo Your Design</div>
+          <div class="doc-title-es">Tu propio diseño</div>
+          <div class="doc-title-zh">纹你的图案</div>
+          <hr class="thick">
+          <div class="desc-box">
+            <div class="desc-en">Already have a design? I can bring it to skin.</div>
+            <div class="desc-es">¿Ya tienes un diseño? Puedo tatuarlo en tu piel.</div>
+            <div class="desc-zh">如果你已经有想要纹的图案，我可以帮你执行。</div>
+          </div>
+          <div class="sec-lbl"><span class="lbl-en">Process</span> <span class="lbl-es">/ Proceso</span> <span class="lbl-zh">/ 流程</span></div>
+          <div class="step"><div class="sn">01.</div><div>
+            <div class="s-en">Send your design via WhatsApp</div>
+            <div class="s-es">Envía tu diseño por WhatsApp</div>
+            <div class="s-zh">发送你的图案</div>
+          </div></div>
+          <div class="step"><div class="sn">02.</div><div>
+            <div class="s-en">Confirm size and placement</div>
+            <div class="s-es">Confirmar tamaño y ubicación</div>
+            <div class="s-zh">确认尺寸与位置</div>
+          </div></div>
+          <div class="step"><div class="sn">03.</div><div>
+            <div class="s-en">Pay deposit to secure session</div>
+            <div class="s-es">Pagar depósito para confirmar</div>
+            <div class="s-zh">支付定金</div>
+          </div></div>
+          <div class="step"><div class="sn">04.</div><div>
+            <div class="s-en">Book your appointment</div>
+            <div class="s-es">Reservar tu cita</div>
+            <div class="s-zh">预约纹身时间</div>
+          </div></div>
+          <div class="btns">
+            <a class="cta cta-p" href="https://wa.me/34661329006?text=Hi!%20I%20want%20to%20tattoo%20my%20own%20design." target="_blank">
+              <span class="cta-main-en">▶ WhatsApp</span>
+              <span class="cta-main-es" style="display:none">▶ WhatsApp</span>
+              <span class="cta-main-zh" style="display:none">▶ WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CUSTOM ══ -->
+      <div id="custom" class="screen">
+        <div class="paper inner-paper">
+          <button class="doc-back" onclick="show('book')">← Back / Volver / 返回</button>
+          <div class="doc-title-en">Custom Design</div>
+          <div class="doc-title-es">Diseño personalizado</div>
+          <div class="doc-title-zh">定制设计</div>
+          <hr class="thick">
+          <div class="desc-box">
+            <div class="desc-en">Share your idea — I create something just for you.</div>
+            <div class="desc-es">Cuéntame tu idea — creo algo único para ti.</div>
+            <div class="desc-zh">告诉我你的想法，我来设计专属图案。</div>
+          </div>
+          <div class="sec-lbl"><span class="lbl-en">Process</span> <span class="lbl-es">/ Proceso</span> <span class="lbl-zh">/ 流程</span></div>
+          <div class="step"><div class="sn">01.</div><div>
+            <div class="s-en">Share idea, mood &amp; references</div>
+            <div class="s-es">Comparte idea, estilo y referencias</div>
+            <div class="s-zh">发送想法与参考图</div>
+          </div></div>
+          <div class="step"><div class="sn">02.</div><div>
+            <div class="s-en">Design discussion and direction</div>
+            <div class="s-es">Discutimos la dirección del diseño</div>
+            <div class="s-zh">设计方向讨论</div>
+          </div></div>
+          <div class="step"><div class="sn">03.</div><div>
+            <div class="s-en">Draft ready in 3–7 days</div>
+            <div class="s-es">Borrador listo en 3–7 días</div>
+            <div class="s-zh">3–7天出草稿</div>
+          </div></div>
+          <div class="step"><div class="sn">04.</div><div>
+            <div class="s-en">Approve design, book appointment</div>
+            <div class="s-es">Apruebas el diseño y reservas cita</div>
+            <div class="s-zh">确认草稿，预约时间</div>
+          </div></div>
+          <div class="btns">
+            <a class="cta cta-p" href="https://wa.me/34661329006?text=Hi!%20I%20want%20a%20custom%20tattoo%20design." target="_blank">
+              <span class="cta-main-en">▶ WhatsApp</span>
+              <span class="cta-main-es" style="display:none">▶ WhatsApp</span>
+              <span class="cta-main-zh" style="display:none">▶ WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ FLASH ══ -->
+      <div id="flash" class="screen flash-fullscreen">
+        <div class="flash-header">
+          <button class="doc-back" onclick="show('book')">← Back / Volver / 返回</button>
+          <div class="flash-title">
+            <span class="doc-title-en" style="font-size:16px">Flash Tattoo</span>
+            <span class="doc-title-es" style="font-size:14px">Reservar Flash</span>
+            <span class="doc-title-zh" style="font-size:14px">Flash 预约</span>
+          </div>
+        </div>
+        <!-- Gallery now loads as a proper separate page — no more base64 srcdoc! -->
+        <iframe id="galleryFrame" class="gallery-iframe" src="gallery.html" frameborder="0" allow="same-origin"></iframe>
+      </div>
+<!-- ══ SHOP ══ -->
+<div id="shop" class="screen">
+  <div class="paper inner-paper">
+    <button class="doc-back" onclick="show('home')">← Back / Volver / 返回</button>
+    <div class="doc-title-en">Shop</div>
+    <div class="doc-title-es">Tienda</div>
+    <div class="doc-title-zh">周边产品</div>
+    <hr class="thick">
+    <div class="desc-box">
+      <div class="desc-en">Prints, stickers &amp; more.</div>
+      <div class="desc-es">Prints, stickers y más.</div>
+      <div class="desc-zh">印刷品、贴纸等周边。</div>
+    </div>
+
+    <a class="nav-item" href="https://www.instagram.com/qian8chi/" target="_blank">
+      <div class="ni-art">;,//;,    ,;/
+o:::::::;;///
+>::::::::;;\\\
+''\\\'" ';\</div>
+      <div class="ni-body">
+        <div class="ni-en">Instagram</div>
+        <div class="ni-es">Instagram</div>
+        <div class="ni-zh">Instagram</div>
+      </div>
+      <div class="ni-arr">▶</div>
+    </a>
+
+    <a class="nav-item" href="https://www.xiaohongshu.com/user/profile/59bd209d44363b2cdbf3123d" target="_blank">
+      <div class="ni-art">   _______
+  /      /,
+ /      //
+/______//
+(______(/</div>
+      <div class="ni-body">
+        <div class="ni-en">Xiaohongshu · Studio</div>
+        <div class="ni-es">Xiaohongshu · Estudio</div>
+        <div class="ni-zh">小红书 · 工作室</div>
+      </div>
+      <div class="ni-arr">▶</div>
+    </a>
+
+    <a class="nav-item" href="https://www.xiaohongshu.com/user/profile/5a3bb819e8ac2b2ee2b69931" target="_blank">
+      <div class="ni-art">   _______
+  /      /,
+ /      //
+/______//
+(______(/</div>
+      <div class="ni-body">
+        <div class="ni-en">Xiaohongshu · Personal</div>
+        <div class="ni-es">Xiaohongshu · Personal</div>
+        <div class="ni-zh">小红书 · 个人</div>
+      </div>
+      <div class="ni-arr">▶</div>
+    </a>
+
+    <a class="nav-item" href="https://g-dh14q2ji-f1n31l7a6a86u41l0v.taobao.com/" target="_blank">
+      <div class="ni-art"> /\/\
+|    |
+|____|</div>
+      <div class="ni-body">
+        <div class="ni-en">Taobao Shop</div>
+        <div class="ni-es">Tienda Taobao</div>
+        <div class="ni-zh">淘宝店铺</div>
+      </div>
+      <div class="ni-arr">▶</div>
+    </a>
+
+  </div>
+</div>
+    </div><!-- /doc-area -->
+  </div><!-- /drawWrap -->
+</div><!-- /app -->
+
+<script src="app.js"></script>
+</body>
+</html>
