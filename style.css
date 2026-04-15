@@ -853,10 +853,10 @@ hr.thick { border-color: var(--t-ink); }
   margin-bottom: 3px;
 }
 .doc-title-es {
-  font-size: 13px;
-  color: var(--t-ink2);
-  letter-spacing: 0.06em;
-  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t-ink);
+  line-height: 1.3;
 }
 .doc-title-zh {
   font-size: 11px;
